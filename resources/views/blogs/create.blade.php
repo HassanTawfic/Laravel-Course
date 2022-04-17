@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title')Create @endsection
 @section('content')
 
     <form class="m-4 border border-3" method="post">

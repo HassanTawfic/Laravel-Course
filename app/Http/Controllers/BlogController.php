@@ -69,8 +69,16 @@ public function show($id){
             'createdAt'=> '16-4-2022 12:00'
         ]
     ];
+    $targetBlog = [];
+    foreach ($blogsInfo as $blog){
+        if ($id == $blog['id']){
+            $targetBlog = $blog;
+            return $targetBlog;
+        }
+    }
+    dd($targetBlog);
 
-    return view('blogs/{show}',['blogs'=> $blogsInfo ]);
+    return view('blogs/show',['blog'=> $targetBlog ]);
 
 }
     public function store(){
