@@ -37,6 +37,10 @@ public function index(){
 
     return view('blogs/index',['blogs'=> $blogsInfo ]);
 }
+public function create()
+{
+    return view('blogs/create');
+}
 
 
 }

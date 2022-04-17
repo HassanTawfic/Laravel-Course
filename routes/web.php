@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [BlogController::class,'index']);
-Route::get('create',[BlogController::class, 'create']);
+Route::get('/',[BlogController::class,'index']);
+Route::get('/blog', [BlogController::class,'index']);
+Route::get('/blog/create',[BlogController::class, 'create']);
