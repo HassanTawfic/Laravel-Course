@@ -73,10 +73,9 @@ public function show($id){
     foreach ($blogsInfo as $blog){
         if ($id == $blog['id']){
             $targetBlog = $blog;
-            return $targetBlog;
+            break;
         }
     }
-    dd($targetBlog);
 
     return view('blogs/show',['blog'=> $targetBlog ]);
 
