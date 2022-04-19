@@ -20,10 +20,11 @@
             </thead>
             <tbody>
             @foreach($blogs as $blog)
+
             <tr>
                 <th class="">{{$blog->id}}</th>
                 <td class="">{{$blog->title}}</td>
-                <td class="">{{$blog->postedBy}}</td>
+                <td class="">{{$blog->user->name ?? 'Not Found'}}</td>
                 <td class="">{{$blog->createdAt}}</td>
                 <td>
                     <div class="d-flex justify-content-start">

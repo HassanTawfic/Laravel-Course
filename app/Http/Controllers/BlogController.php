@@ -36,7 +36,8 @@ public function show($id){
         $data = request()->all();
         Blog::create([
            'title' => $data['title'],
-           'description' => $data['description']
+           'description' => $data['description'],
+           'user_id' => $data['postedBy'],
         ]);
         //$blogs = Blog::all();
         return to_route('blogs.index');
