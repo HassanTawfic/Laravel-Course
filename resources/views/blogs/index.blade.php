@@ -1,6 +1,4 @@
 @extends('layouts.app')
-
-
 @section('title')Index @endsection
 @section('content')
 
@@ -15,17 +13,18 @@
                 <th scope="col">Title</th>
                 <th scope="col">Posted By</th>
                 <th scope="col">Created At</th>
+                <th scope="col">Updated At</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
             @foreach($blogs as $blog)
-
             <tr>
                 <th class="">{{$blog->id}}</th>
                 <td class="">{{$blog->title}}</td>
                 <td class="">{{$blog->user->name ?? 'Not Found'}}</td>
-                <td class="">{{$blog->createdAt}}</td>
+                <td class="">{{$blog->created_at}}</td>
+                <td class="">{{$blog->updated_at}}</td>
                 <td>
                     <div class="d-flex justify-content-start">
                         <a href="" type="button" class="btn btn-primary me-2">Edit</a>
@@ -39,5 +38,4 @@
 
         </table>
     </div>
-
 @endsection

@@ -12,6 +12,7 @@ class BlogController extends Controller
 public function index(){
 
     $blogs = Blog::all();
+    dd($blogs);
     //$filteredPost = Blog::where('title','js')->get();
     //dd($filteredPost);
 
