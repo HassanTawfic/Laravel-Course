@@ -2,113 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
 
 public function index(){
-    $blogsInfo = [
-        [
-            'id'=>'1',
-            'title'=>'Hello',
-            'postedBy'=> 'Hassan',
-            'createdAt'=> '16-4-2022 12:00'
-        ],
-        [
-            'id'=>'2',
-            'title'=>'Hello',
-            'postedBy'=> 'Hassan',
-            'createdAt'=> '16-4-2022 12:00'
-        ],
-        [
-            'id'=>'3',
-            'title'=>'Hello',
-            'postedBy'=> 'Hassan',
-            'createdAt'=> '16-4-2022 12:00'
-        ],
-        [
-            'id'=>'4',
-            'title'=>'Hello',
-            'postedBy'=> 'Hassan',
-            'createdAt'=> '16-4-2022 12:00'
-        ]
-    ];
 
-    return view('blogs/index',['blogs'=> $blogsInfo ]);
+    $blogs = Blog::all();
+    //$filteredPost = Blog::where('title','js')->get();
+    //dd($filteredPost);
+
+    return view('blogs/index',['blogs'=> $blogs]);
 }
 public function create()
 {
-    return view('blogs/create');
+    $users = User::all();
+    //dd($users);
+    return view('blogs/create',['users'=> $users]);
 }
 public function show($id){
 
-    $blogsInfo = [
-        [
-            'id'=>'1',
-            'title'=>'Hello',
-            'postedBy'=> 'Hassan',
-            'createdAt'=> '16-4-2022 12:00'
-        ],
-        [
-            'id'=>'2',
-            'title'=>'Hello',
-            'postedBy'=> 'Hassan',
-            'createdAt'=> '16-4-2022 12:00'
-        ],
-        [
-            'id'=>'3',
-            'title'=>'Hello',
-            'postedBy'=> 'Hassan',
-            'createdAt'=> '16-4-2022 12:00'
-        ],
-        [
-            'id'=>'4',
-            'title'=>'Hello',
-            'postedBy'=> 'Hassan',
-            'createdAt'=> '16-4-2022 12:00'
-        ]
-    ];
-    $targetBlog = [];
-    foreach ($blogsInfo as $blog){
-        if ($id == $blog['id']){
-            $targetBlog = $blog;
-            break;
-        }
-    }
 
-    return view('blogs/show',['blog'=> $targetBlog ]);
+    //$targetBlog = Blog::where('id',$id)->first();
+    $targetBlog = Blog::find($id);
+
+    return view('blogs/show',['blog'=> $targetBlog]);
 
 }
     public function store(){
-        $blogsInfo = [
-            [
-                'id'=>'1',
-                'title'=>'Hello',
-                'postedBy'=> 'Hassan',
-                'createdAt'=> '16-4-2022 12:00'
-            ],
-            [
-                'id'=>'2',
-                'title'=>'Hello',
-                'postedBy'=> 'Hassan',
-                'createdAt'=> '16-4-2022 12:00'
-            ],
-            [
-                'id'=>'3',
-                'title'=>'Hello',
-                'postedBy'=> 'Hassan',
-                'createdAt'=> '16-4-2022 12:00'
-            ],
-            [
-                'id'=>'4',
-                'title'=>'Hello',
-                'postedBy'=> 'Hassan',
-                'createdAt'=> '16-4-2022 12:00'
-            ]
-        ];
-
-        return view('blogs/index',['blogs'=> $blogsInfo ]);
+        $data = request()->all();
+        Blog::create([
+           'title' => $data['title'],
+           'description' => $data['description']
+        ]);
+        //$blogs = Blog::all();
+        return to_route('blogs.index');
     }
 
 }

@@ -21,10 +21,10 @@
             <tbody>
             @foreach($blogs as $blog)
             <tr>
-                <th class="">{{$blog['id']}}</th>
-                <td class="">{{$blog['title']}}</td>
-                <td class="">{{$blog['postedBy']}}</td>
-                <td class="">{{$blog['createdAt']}}</td>
+                <th class="">{{$blog->id}}</th>
+                <td class="">{{$blog->title}}</td>
+                <td class="">{{$blog->postedBy}}</td>
+                <td class="">{{$blog->createdAt}}</td>
                 <td>
                     <div class="d-flex justify-content-start">
                         <a href="" type="button" class="btn btn-primary me-2">Edit</a>

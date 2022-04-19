@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',[BlogController::class,'index']);
+Route::get('/',[BlogController::class,'index'])->name('blogs.index');
 Route::get('/blog', [BlogController::class,'index']);
 Route::get('/blog/create',[BlogController::class, 'create']);
-Route::post('/blog',[BlogController::class,'store']);
-Route::get('/blog/{id}',[BlogController::class,'show']);
+Route::post('/blog/store',[BlogController::class,'store'])->name('blogs.store');
+Route::get('/blog/{id}',[BlogController::class,'show'])->name('blogs.show');
