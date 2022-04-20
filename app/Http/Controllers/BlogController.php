@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -25,7 +26,9 @@ public function show($id){
 
     //$targetBlog = Blog::where('id',$id)->first();
     $targetBlog = Blog::find($id);
-    return view('blogs/show',['blog'=> $targetBlog]);
+    $user = User::find($targetBlog->user_id);
+    $date = Carbon::parse($targetBlog['created_at'])->format('l jS \\of F Y h:i:s A');
+    return view('blogs.show',['blog'=> $targetBlog, 'user'=> $user, 'date'=>$date]);
 
 }
     public function store(){
@@ -37,6 +40,25 @@ public function show($id){
         ]);
         //$blogs = Blog::all();
         return to_route('blogs.index');
+    }
+
+    public function update($id){
+    $data = request()->all();
+    //dd($data,$id);
+
+    $targetBlog = Blog::find($id);
+    $targetBlog->title = $data['title'];
+    $targetBlog->description = $data['description'];
+    $targetBlog->user_id = $data['postedBy'];
+    $targetBlog->save();
+    return to_route('blogs.index');
+    }
+
+    public function edit($id){
+        $targetBlog = Blog::find($id);
+        $user = User::find($targetBlog->user_id);
+        //return view('blogs/show',['blog'=> $targetBlog, 'user'=> $user, 'date'=>$date]);
+        return view( 'blogs.edit',['blog'=> $targetBlog, 'user'=> $user]);
     }
 
 }

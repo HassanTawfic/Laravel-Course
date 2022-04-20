@@ -27,8 +27,8 @@
                 <td class="">{{$blog->updated_at}}</td>
                 <td>
                     <div class="d-flex justify-content-start">
-                        <a href="" type="button" class="btn btn-primary me-2">Edit</a>
-                        <a href="/blog/{{$blog['id']}}" type="button" class="btn btn-success me-2">View</a>
+                        <a href="{{route('blogs.show',['id'=>$blog['id']])}}" type="button" class="btn btn-success me-2">View</a>
+                        <a href="{{route('blogs.edit',['id'=>$blog['id']])}}" type="button" class="btn btn-primary me-2">Edit</a>
                         <a href="" type="button" class="btn btn-danger me-2">Delete</a>
                     </div>
                 </td>
