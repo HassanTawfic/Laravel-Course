@@ -1,0 +1,8 @@
+
+body {
+    margin: 0;
+    background: url("../assets/back-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(7px);
+}

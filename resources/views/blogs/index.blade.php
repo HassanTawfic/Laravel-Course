@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="CreateButton d-flex">
-        <a href="/blog/create" type="button" class="btn btn-success mb-3 mt-5 ms-auto text-wrap">Create a new blog post!</a>
+        <a href="/blog/create" type="button" class="btn btn-success mb-3 mt-5 ms-auto border border-white border-1 text-wrap">Create a new blog post!</a>
     </div>
     <div class="TableDisplay">
-        <table class="table table-light table-striped ">
+        <table class="table table-dark table-hover border border-white border-2">
             <thead>
             <tr>
                 <th scope="col">#</th>

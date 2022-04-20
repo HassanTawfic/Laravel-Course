@@ -12,16 +12,12 @@ class BlogController extends Controller
 public function index(){
 
     $blogs = Blog::all();
-    dd($blogs);
-    //$filteredPost = Blog::where('title','js')->get();
-    //dd($filteredPost);
 
     return view('blogs/index',['blogs'=> $blogs]);
 }
 public function create()
 {
     $users = User::all();
-    //dd($users);
     return view('blogs/create',['users'=> $users]);
 }
 public function show($id){
@@ -29,7 +25,6 @@ public function show($id){
 
     //$targetBlog = Blog::where('id',$id)->first();
     $targetBlog = Blog::find($id);
-
     return view('blogs/show',['blog'=> $targetBlog]);
 
 }
