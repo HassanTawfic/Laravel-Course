@@ -6,14 +6,14 @@ use App\Models\Blog;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class BlogController extends Controller
 {
 
 public function index(){
 
-    $blogs = Blog::all();
-
+    $blogs = Blog::paginate(3);
     return view('blogs/index',['blogs'=> $blogs]);
 }
 public function create()

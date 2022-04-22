@@ -58,5 +58,10 @@
             @endforeach
             </tbody>
         </table>
+        <div class="d-flex">
+            {{$blogs->links()}}
+        </div>
     </div>
 @endsection
+
+
