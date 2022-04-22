@@ -56,9 +56,17 @@ public function show($id){
 
     public function edit($id){
         $targetBlog = Blog::find($id);
-        $user = User::find($targetBlog->user_id);
+        //$user = User::find($targetBlog->user_id)
+        $users = User::all();
         //return view('blogs/show',['blog'=> $targetBlog, 'user'=> $user, 'date'=>$date]);
-        return view( 'blogs.edit',['blog'=> $targetBlog, 'user'=> $user]);
+        return view( 'blogs.edit',['blog'=> $targetBlog, 'users'=> $users]);
     }
 
+    public function destroy($id){
+    dd($id);
+    $targetBlog = Blog::find($id);
+        dd($targetBlog);
+        $targetBlog->delete();
+        return to_route('blogs.index');
+    }
 }

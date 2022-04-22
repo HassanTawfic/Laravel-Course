@@ -20,4 +20,5 @@ Route::post('/blog/store',[BlogController::class,'store'])->name('blogs.store');
 Route::put('/blog/{id}',[BlogController::class,'update'])->name('blogs.update');
 Route::get('/blog/{id}',[BlogController::class,'show'])->name('blogs.show');
 Route::get('/blog/{id}/edit',[BlogController::class,'edit'])->name('blogs.edit');
+Route::delete('/blog/{id}',[BlogController::class,'destroy'])->name('blogs.destroy');
 
