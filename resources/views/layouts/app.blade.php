@@ -23,7 +23,17 @@
     </div>
 </nav>
 <div class="container">
-
+    @if ($errors->any())
+        <div class=" d-flex justify-content-center">
+            <div class="alert alert-danger mt-5 col-6 d-flex align-items-center">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @endif
     @yield('content')
 
 </div>

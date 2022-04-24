@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBlogRequest;
 use App\Models\Blog;
 use App\Models\Comment;
 use App\Models\User;
@@ -34,7 +35,12 @@ public function show($id){
     return view('blogs.show',['blog'=> $targetBlog, 'user'=> $user, 'date'=>$date, 'comments' => $comments]);
 
 }
-    public function store(){
+    public function store(StoreBlogRequest $request){
+
+        request()->validate([
+            'title' => ['required','min:3'],
+            'description' => ['required','min:10']
+        ]);
         $data = request()->all();
         Blog::create([
            'title' => $data['title'],
