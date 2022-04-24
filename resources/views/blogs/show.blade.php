@@ -29,7 +29,7 @@
     </div>
     <h2 class="text-center">Comment Section</h2>
     <div class="d-flex justify-content-center ">
-        <button class="btn btn-success my-2 border border-white border-1">Add a new Comment</button>
+        <a href="{{route('blogs.comments.create',[$blog->id])}}" class="btn btn-success my-2 border border-white border-1">Add a new Comment</a>
     </div>
     <div class=" ">
 

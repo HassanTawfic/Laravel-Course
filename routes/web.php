@@ -23,4 +23,5 @@ Route::get('/blog/{id}',[BlogController::class,'show'])->name('blogs.show');
 Route::get('/blog/{id}/edit',[BlogController::class,'edit'])->name('blogs.edit');
 Route::delete('/blog/{id}',[BlogController::class,'destroy'])->name('blogs.destroy');
 Route::get('/comment/{id}',[CommentController::class,'show'])->name('comments.show');
-
+Route::get('/blog/{blogId}/comments/create',[CommentController::class,'create'])->name('blogs.comments.create');
+Route::post('/photos/{blogId}/comments',[CommentController::class,'store'])->name('blogs.comments.store');
