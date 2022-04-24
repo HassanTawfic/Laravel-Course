@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title')Show @endsection
+@section('title')Show Blog @endsection
 
 @section('content')
 
@@ -45,7 +45,8 @@
                         <footer class="blockquote-footer my-1">by {{$comment->commentedBy}} <cite title="Source Title">{{\Carbon\Carbon::parse($comment->created_at)->toDayDateTimeString()}}</cite></footer>
                     </blockquote>
                     <div class="d-flex">
-                        <a href="#" class="btn btn-danger mt-2 ms-auto">Delete</a>
+                        <a href="{{route('comments.show',['id'=>$comment['id']])}}" type="button" class="btn btn-success mt-2 me-2 ms-auto">View</a>
+                        <a href="#" class="btn btn-danger mt-2">Delete</a>
                     </div>
 
                 </div>
