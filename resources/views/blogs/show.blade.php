@@ -4,15 +4,6 @@
 
 @section('content')
 
-    <!--<div class="card mt-5 w-100" >
-        <div class="card-body">
-           <div class="card-header"></div>
-            <h5 class="card-title">{{$blog->title}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{$blog['createdAt']}}</h6>
-            <p class="card-text">{{$blog['postedBy']}}</p>
-        </div>
-    </div>-->
-
     <div class="card mt-5 w-100">
         <div class="card-header fs-3">
             Post Information
@@ -35,6 +26,31 @@
             <h6 class="mb-3">Email: {{$user->email}}</h6>
             <h6 class="mb-3">Created At: {{$date}}</h6>
         </div>
+    </div>
+    <h2 class="text-center">Comment Section</h2>
+    <div class="d-flex justify-content-center ">
+        <button class="btn btn-success my-2 border border-white border-1">Add a new Comment</button>
+    </div>
+    <div class=" ">
+
+        @foreach($comments as $comment)
+
+            <div class="card m-3 ">
+                <div class="card-header fw-bold">
+                    Featured Comment
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>{{$comment->comment}}</p>
+                        <footer class="blockquote-footer my-1">by {{$comment->commentedBy}} <cite title="Source Title">{{\Carbon\Carbon::parse($comment->created_at)->toDayDateTimeString()}}</cite></footer>
+                    </blockquote>
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-danger mt-2 ms-auto">Delete</a>
+                    </div>
+
+                </div>
+            </div>
+        @endforeach
     </div>
 
 @endsection

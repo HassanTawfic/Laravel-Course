@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('comment');
+            $table->text('commentedBy');
             $table->integer('commentable_id');
             $table->string('commentable_type');
             $table->timestamps();

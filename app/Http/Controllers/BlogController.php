@@ -30,7 +30,6 @@ public function show($id){
     $targetBlog = Blog::find($id);
     $user = User::find($targetBlog->user_id);
     $comments = $targetBlog->comments;
-    dd($comments);
     $date = Carbon::parse($targetBlog['created_at'])->format('l jS \\of F Y h:i:s A');
     return view('blogs.show',['blog'=> $targetBlog, 'user'=> $user, 'date'=>$date, 'comments' => $comments]);
 

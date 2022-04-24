@@ -20,6 +20,7 @@ class CommentFactory extends Factory
         $commentable = $this->commentable();
         return [
             'comment' => $this->faker->paragraph,
+            'commentedBy' => $this->faker->name,
             'commentable_id' => Blog::factory(),
             'commentable_type' => $commentable,
         ];
