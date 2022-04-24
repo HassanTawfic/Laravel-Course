@@ -16,12 +16,6 @@ class BlogController extends Controller
 public function index(){
 
     $blogs = Blog::paginate(3);
-    $blogss = Blog::find(1);
-    foreach ($blogss->comments as $comment)
-    {
-        dd($comment);
-    }
-    die();
     return view('blogs/index',['blogs'=> $blogs]);
 }
 public function create()
@@ -35,8 +29,10 @@ public function show($id){
     //$targetBlog = Blog::where('id',$id)->first();
     $targetBlog = Blog::find($id);
     $user = User::find($targetBlog->user_id);
+    $comments = $targetBlog->comments;
+    dd($comments);
     $date = Carbon::parse($targetBlog['created_at'])->format('l jS \\of F Y h:i:s A');
-    return view('blogs.show',['blog'=> $targetBlog, 'user'=> $user, 'date'=>$date]);
+    return view('blogs.show',['blog'=> $targetBlog, 'user'=> $user, 'date'=>$date, 'comments' => $comments]);
 
 }
     public function store(){
