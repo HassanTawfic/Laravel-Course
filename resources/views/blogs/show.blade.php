@@ -46,6 +46,7 @@
                     </blockquote>
                     <div class="d-flex">
                         <a href="{{route('comments.show',['id'=>$comment['id']])}}" type="button" class="btn btn-success mt-2 me-2 ms-auto">View</a>
+                        <a href="{{route('comments.edit',['commentId'=>$comment['id']])}}" type="button" class="btn btn-primary mt-2 me-2">Edit</a>
                         <a href="#" class="btn btn-danger mt-2">Delete</a>
                     </div>
 
