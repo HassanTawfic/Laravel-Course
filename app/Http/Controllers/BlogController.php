@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBlogRequest;
+use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\Comment;
 use App\Models\User;
@@ -37,10 +38,7 @@ public function show($id){
 }
     public function store(StoreBlogRequest $request){
 
-        request()->validate([
-            'title' => ['required','min:3'],
-            'description' => ['required','min:10']
-        ]);
+
         $data = request()->all();
         Blog::create([
            'title' => $data['title'],
@@ -51,7 +49,7 @@ public function show($id){
         return to_route('blogs.index');
     }
 
-    public function update($id){
+    public function update($id, UpdateBlogRequest $request){
     $data = request()->all();
     //dd($data,$id);
 

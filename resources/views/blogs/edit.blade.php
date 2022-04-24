@@ -2,7 +2,7 @@
 @section('title')Edit @endsection
 @section('content')
 
-    <form class="m-4 border border-3" method="POST" action="{{route('blogs.update',['id' => $blog['id']])}}">
+    <form class="m-4 border border-3 bg-light" method="POST" action="{{route('blogs.update',['id' => $blog['id']])}}">
         @csrf
         @method('PUT')
         <div class="m-3">
