@@ -33,7 +33,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a href="{{route('blogs.index')}}" class="nav-link">All Blogs</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -75,7 +77,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 bg-dark">
             @yield('content')
         </main>
     </div>
