@@ -47,7 +47,28 @@
                     <div class="d-flex">
                         <a href="{{route('comments.show',['id'=>$comment['id']])}}" type="button" class="btn btn-success mt-2 me-2 ms-auto">View</a>
                         <a href="{{route('comments.edit',['commentId'=>$comment['id']])}}" type="button" class="btn btn-primary mt-2 me-2">Edit</a>
-                        <a href="#" class="btn btn-danger mt-2">Delete</a>
+                        <button class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#commentDelete_{{$comment->id}}">Delete</button>
+                        <div class="modal fade" id="commentDelete_{{$comment->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-danger" id="exampleModalLabel">DELETION?!</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-dark">Are you sure you want to delete comment by <span class="fw-bolder">{{$comment->commentedBy}}</span> ??</p>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-between">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <form method="post" action="{{route('comments.destroy',['commentId'=>$comment['id']])}}" class="delete">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger"> Yes, I'm sure</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

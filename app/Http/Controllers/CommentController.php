@@ -52,4 +52,12 @@ class CommentController extends Controller
         $blog = new BlogController();
         return $blog->show($targetComment->commentable_id);
     }
+
+    public function destroy($commentId){
+        $targetComment = Comment::find($commentId);
+        $blogId = $targetComment->commentable_id;
+        $targetComment->delete();
+        $blog = new BlogController();
+        return $blog->show($blogId);
+    }
 }
