@@ -27,7 +27,7 @@
             <h6 class="mb-3">Created At: {{$date}}</h6>
         </div>
     </div>
-    <h2 class="text-center">Comment Section</h2>
+    <h2 class="text-center text-light">Comment Section</h2>
     <div class="d-flex justify-content-center ">
         <a href="{{route('blogs.comments.create',[$blog->id])}}" class="btn btn-success my-2 border border-white border-1">Add a new Comment</a>
     </div>
