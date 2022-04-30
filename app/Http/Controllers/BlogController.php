@@ -10,6 +10,8 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class BlogController extends Controller
 {
@@ -40,10 +42,15 @@ public function show($id){
 
 
         $data = request()->all();
+            $destinationPath = 'public/images/blogs';
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs($destinationPath,$image_name);
         Blog::create([
            'title' => $data['title'],
            'description' => $data['description'],
            'user_id' => $data['postedBy'],
+           'image' => $image_name
         ]);
         //$blogs = Blog::all();
         return to_route('blogs.index');
@@ -71,6 +78,9 @@ public function show($id){
 
     public function destroy($id){
         $targetBlog = Blog::find($id);
+        File::delete('public/storage/images/blogs/'.$targetBlog->image);
+        Storage::delete($targetBlog->image);
+
         $targetBlog->delete();
         return to_route('blogs.index');
     }

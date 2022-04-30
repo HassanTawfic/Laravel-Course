@@ -28,6 +28,7 @@ class StoreBlogRequest extends FormRequest
             'title' => ['required','min:3','unique:App\Models\Blog,title'],
             'description' => ['required','min:10'],
             'user_id' => ['min:1','max:10'],
+            'image' => 'mimes:jpg,png',
         ];
     }
     public function messages()
@@ -39,7 +40,8 @@ class StoreBlogRequest extends FormRequest
             'description.required' => 'Description is required',
             'description.min' => 'Description must be more than 10 characters',
             'user_id.min' => 'User out of boundaries',
-            'user_id.max' => 'User out of boundaries'
+            'user_id.max' => 'User out of boundaries',
+            'image.mimes' => 'Photo can only be in .jpg or .png extensions'
         ];
     }
 }

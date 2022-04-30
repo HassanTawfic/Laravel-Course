@@ -13,7 +13,7 @@ class Blog extends Model
     use Sluggable;
 
     protected $fillable = [
-        'title','description','user_id',
+        'title','description','user_id','image',
     ];
 
     public function user(){

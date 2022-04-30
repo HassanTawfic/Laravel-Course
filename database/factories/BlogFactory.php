@@ -18,6 +18,7 @@ class BlogFactory extends Factory
         return [
             'title' => $this->faker->realText(20),
             'description' => $this->faker->paragraph,
+            'image' => $this->faker->image,
             'created_at' => now(),
             'user_id' => User::factory(),
         ];
