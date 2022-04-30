@@ -72,13 +72,14 @@ public function show($id){
         $targetBlog = Blog::find($id);
         //$user = User::find($targetBlog->user_id)
         $users = User::all();
+        Storage::delete($targetBlog->image);
         //return view('blogs/show',['blog'=> $targetBlog, 'user'=> $user, 'date'=>$date]);
         return view( 'blogs.edit',['blog'=> $targetBlog, 'users'=> $users]);
     }
 
     public function destroy($id){
         $targetBlog = Blog::find($id);
-        File::delete('public/storage/images/blogs/'.$targetBlog->image);
+        File::delete('public'.$targetBlog->image);
         Storage::delete($targetBlog->image);
 
         $targetBlog->delete();

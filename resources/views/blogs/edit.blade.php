@@ -13,6 +13,10 @@
             <label for="floatingTextarea2" class="form-label fw-bold">Description</label>
             <textarea name="description" class="form-control" placeholder="" id="" style="height: 100px; resize: none">{{$blog->description}}</textarea>
         </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label text-white">Upload an image</label>
+            <input class="form-control" name="image" type="file" id="formFile">
+        </div>
         <div class=" col-11 d-flex justify-content-between">
             <label class="from-label px-3 my-2 fw-bold" for="">Post Creator</label>
             <select name="postedBy" class="form-select py-1 my-1 " aria-label="Default select example">
